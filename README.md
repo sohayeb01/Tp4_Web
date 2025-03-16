@@ -1,4 +1,4 @@
-﻿# 👋 Hello, I'm Sohayeb Gasmi !
+# 👋 Hello, I'm Sohayeb Gasmi !
 
 ## 🚀 About Me
 💻 Developer specializing in **Web Development, Artificial Intelligence, Cybersecurity, Embedded Systems**  
@@ -94,4 +94,4 @@
 ---
 
 
-🚀 **Let’s build something amazing together!**
+🚀 **Let's build something amazing together!**
