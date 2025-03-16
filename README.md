@@ -62,7 +62,17 @@
 ![Qt Framework](https://img.shields.io/badge/Qt-41CD52?style=for-the-badge&logo=qt&logoColor=white)  
 
 ---
+## Most Used Languages
 
+![Python](https://img.shields.io/badge/Python-100%25-blue?style=flat-square)
+![JavaScript](https://img.shields.io/badge/JavaScript-100%25-yellow?style=flat-square)
+![C](https://img.shields.io/badge/C-100%25-blue?style=flat-square)
+![C++](https://img.shields.io/badge/C++-100%25-blue?style=flat-square)
+![C#](https://img.shields.io/badge/C%23-100%25-purple?style=flat-square)
+![HTML5](https://img.shields.io/badge/HTML5-100%25-orange?style=flat-square)
+![CSS](https://img.shields.io/badge/CSS-100%25-blue?style=flat-square)
+![PHP](https://img.shields.io/badge/PHP-90%25-purple?style=flat-square)
+---
 ## 📊 إحصائيات GitHub  
 ![GitHub Stats](https://github-readme-stats.vercel.app/api?username=YourUsername&show_icons=true&theme=radical)  
 ![Top Languages](https://github-readme-stats.vercel.app/api/top-langs/?username=YourUsername&layout=compact&theme=radical)
