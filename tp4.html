@@ -1,0 +1,1353 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sohayeb Gasmi</title>
+<style>
+:root {
+  /* Dark Mode Colors */
+  --background-dark: #1a1a2e;
+  --background-dark-secondary: #222;
+  --text-primary-dark: #fff;
+  --text-secondary-dark: #ccc;
+  --text-tertiary-dark: #999;
+  --accent-color-dark: #00d4ff;
+  --wave-color-dark: #00d4ff;
+  --scrollbar-track-dark: #1a1a2e;
+  --scrollbar-thumb-dark: #00d4ff;
+  --scrollbar-thumb-hover-dark: #00b3cc;
+  /* Light Mode Colors */
+  --background-light: #f5f5f5;
+  --background-light-secondary: #e0e0e0;
+  --text-primary-light: #333;
+  --text-secondary-light: #666;
+  --text-tertiary-light: #888;
+  --accent-color-light: #007bff;
+  --wave-color-light: #007bff;
+  --scrollbar-track-light: #ddd;
+  --scrollbar-thumb-light: #007bff;
+  --scrollbar-thumb-hover-light: #0056b3;
+  /* Default to Dark Mode */
+  --background: var(--background-dark);
+  --background-secondary: var(--background-dark-secondary);
+  --text-primary: var(--text-primary-dark);
+  --text-secondary: var(--text-secondary-dark);
+  --text-tertiary: var(--text-tertiary-dark);
+  --accent-color: var(--accent-color-dark);
+  --wave-color: var(--wave-color-dark);
+  --scrollbar-track: var(--scrollbar-track-dark);
+  --scrollbar-thumb: var(--scrollbar-thumb-dark);
+  --scrollbar-thumb-hover: var(--scrollbar-thumb-hover-dark);
+}
+[data-theme="light"] {
+  --background: var(--background-light);
+  --background-secondary: var(--background-light-secondary);
+  --text-primary: var(--text-primary-light);
+  --text-secondary: var(--text-secondary-light);
+  --text-tertiary: var(--text-tertiary-light);
+  --accent-color: var(--accent-color-light);
+  --wave-color: var(--wave-color-light);
+  --scrollbar-track: var(--scrollbar-track-light);
+  --scrollbar-thumb: var(--scrollbar-thumb-light);
+  --scrollbar-thumb-hover: var(--scrollbar-thumb-hover-light);
+}
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Arial, sans-serif;
+}
+span {
+    cursor: pointer;
+}
+html {
+  scroll-behavior: smooth;
+  scrollbar-width: thin;
+  scrollbar-color: var(--scrollbar-thumb) var(--scrollbar-track);
+  height: 100%;
+  overflow-y: scroll;
+}
+body {
+  background-color: var(--background);
+  color: var(--text-primary);
+  line-height: 1.6;
+  min-height: 100vh;
+  overflow-x: hidden;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+::-webkit-scrollbar {
+  width: 12px;
+}
+::-webkit-scrollbar-track {
+  background: var(--scrollbar-track);
+  border-radius: 10px;
+}
+::-webkit-scrollbar-thumb {
+  background: var(--scrollbar-thumb);
+  border-radius: 10px;
+  border: 2px solid var(--scrollbar-track);
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--scrollbar-thumb-hover);
+}
+.skill-name {
+  font-weight: bold;
+  color: var(--accent-color);
+  cursor: text;
+}
+
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background-color: var(--background);
+  padding: 1rem 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  z-index: 1000;
+  transition: background-color 0.3s ease;
+}
+.navbar .logo {
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+.navbar .logo .accent-color {
+  color: var(--accent-color);
+}
+.navbar .nav-links {
+  display: flex;
+  gap: 2rem;
+}
+.nav-links a {
+  color: var(--text-primary);
+  text-decoration: none;
+  font-size: 1rem;
+  transition: color 0.3s ease;
+}
+
+.nav-links a:hover {
+  color: var(--accent-color);
+}
+.container {
+  padding: 100px 50px 50px;
+  position: relative;
+  min-height: 200vh;
+}
+.background-wave {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: url('data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320"%3E%3Cpath fill="%2300d4ff" fill-opacity="0.1" d="M0,64L48,80C96,96,192,128,288,122.7C384,117,480,75,576,58.7C672,43,768,53,864,74.7C960,96,1056,128,1152,128C1248,128,1344,96,1392,80L1440,64V320H0Z"%3E%3C/path%3E%3C/svg%3E');
+  background-repeat: repeat-x;
+  background-size: cover;
+  z-index: -1;
+  animation: waveMove 10s infinite linear;
+}
+@keyframes waveMove {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-100%); }
+}
+.social-media{
+  display: flex;
+  flex-direction: row;
+  justify-content: start;
+  flex-wrap: wrap;
+  gap: 10px;
+  align-items: center;
+  max-width: 1200px;
+  padding: 20px;
+  background-color: var(--background);
+  margin: 0 auto;
+  border-radius: 90px;
+}
+.social-media svg{
+  fill: var(--accent-color) !important;
+  transition: fill 0.3s ease;
+}
+.social-media a{
+border-radius: 100%;
+display: flex;
+justify-content: center;
+align-items: center;
+width: 40px;
+height: 40px;
+border: 2px solid var(--accent-color);
+transition: all 0.3s ease;
+}
+.social-media a:hover {
+    background-color: var(--accent-color);
+}
+.social-media a:hover svg {
+    fill: var(--background) !important;
+}
+.hero {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
+    text-align: start;
+    opacity: 0;
+    animation: fadeInUp 1s forwards 0.5s;
+    padding-top: 60px;
+}
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(50px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+.hero-text {
+  margin-bottom: 2rem;
+}
+.hero-text h1 {
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+  color: var(--accent-color);
+}
+.hero-text h2 {
+  font-size: 1.5rem;
+  color: var(--text-secondary);
+  margin-bottom: 1rem;
+}
+.hero-text h3 {
+  font-size: 1.2rem;
+  color: var(--text-tertiary);
+  margin-bottom: 1rem;
+}
+.hero-text p {
+  color: var(--text-tertiary);
+  margin-bottom: 1.5rem;
+}
+.hero-text .btn {
+  background-color: var(--accent-color);
+  color: var(--background);
+  padding: 0.8rem 2rem;
+  border: none;
+  border-radius: 25px;
+  cursor: pointer;
+  font-weight: bold;
+  text-decoration: none;
+  transition: transform 0.3s ease, background-color 0.3s ease, color 0.3s ease;
+}
+.hero-text .btn:hover {
+  transform: scale(1.05);
+  background-color: var(--text-primary);
+  color: var(--accent-color);
+}
+.hero-image {
+  text-align: center;
+}
+.hero-image .hexagon {
+  clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+  background-color: var(--accent-color);
+  width: 250px;
+  height: 300px;
+  overflow: hidden;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 10px;
+  animation: pulseScale 3s infinite ease-in-out;
+}
+@keyframes pulseScale {
+  0% { transform: scale(1); opacity: 0.9; }
+  50% { transform: scale(1.05); opacity: 1; }
+  100% { transform: scale(1); opacity: 0.9; }
+}
+.hero-image img {
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+}
+.skills {
+  max-width: 1200px;
+  margin: 8rem auto;
+  text-align: left;
+  opacity: 0;
+  padding-top: 60px;
+  animation: fadeInUpSkills 1s forwards;
+  animation-delay: 0.5s;
+  animation-play-state: paused;
+}
+.skills:hover,
+.skills.in-view {
+  animation-play-state: running;
+}
+@keyframes fadeInUpSkills {
+  from { opacity: 0; transform: translateY(50px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+.skills-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 2rem;
+  margin-top: 2rem;
+}
+.skill-card {
+  background: none;
+  padding: 1rem;
+  border-radius: 10px;
+  text-align: left;
+  opacity: 0;
+  transform: translateY(50px);
+  animation: slideInSkills 0.5s forwards;
+  animation-delay: calc(var(--order) * 0.2s);
+  animation-play-state: paused;
+}
+.skills:hover .skill-card,
+.skills.in-view .skill-card {
+  animation-play-state: running;
+}
+@keyframes slideInSkills {
+  to { opacity: 1; transform: translateY(0); }
+}
+.skill-card img {
+  width: 40px;
+  height: 40px;
+  object-fit: contain;
+  margin-bottom: 1rem;
+}
+.skill-card h3 {
+  color: var(--text-primary);
+  font-size: 1.2rem;
+  margin-bottom: 0.5rem;
+  font-weight: 500;
+}
+.skill-card p {
+  color: var(--text-tertiary);
+  font-size: 0.9rem;
+  line-height: 1.5;
+}
+.star-rating {
+  display: flex;
+  gap: 5px;
+  margin-top: 10px;
+}
+.star {
+  font-size: 1.2rem;
+  color: transparent; /* For empty star */
+  -webkit-text-stroke: 1px var(--text-primary); /* Outline for empty star */
+  cursor: default;
+}
+.star.filled {
+  color: #ffd700; /* Gold color for filled star */
+  -webkit-text-stroke: 0; /* Remove outline for filled star */
+}
+.star::before {
+  content: "★"; /* Unicode for star */
+}
+.view-all {
+  display: inline-block;
+  color: var(--accent-color);
+  font-size: 1rem;
+  margin-top: 2rem;
+  text-decoration: none;
+  border: 1px solid var(--accent-color);
+  padding: 0.5rem 1rem;
+  transition: color 0.3s ease, border-color 0.3s ease;
+}
+.view-all:hover {
+  color: var(--text-primary);
+  border-color: var(--text-primary);
+}
+.theme-switch {
+  position: relative;
+  display: inline-block;
+  width: 60px;
+  height: 34px;
+}
+.theme-switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+input:checked {
+  background-color: var(--accent-color);
+}
+input:checked {
+  transform: translateX(26px);
+}
+input:checked ~ * {
+  content: attr(data-theme,"light");
+}
+@media (max-width: 768px) {
+  .navbar .nav-links {
+    display: none;
+  }
+  .hero,
+  .skills {
+    text-align: center;
+  }
+  .skills-intro {
+    margin: 0 auto 2rem;
+  }
+  .skills-grid {
+    grid-template-columns: 1fr;
+    align-items: center;
+  }
+  .skill-card {
+    text-align: center;
+  }
+  .skill-card img {
+    margin: 0 auto 1rem;
+  }
+  .theme-switch {
+    margin-left: 1rem;
+  }
+}
+button {
+  all: unset;
+  max-width: 200px;
+  max-height: 50px;
+  display: flex;
+  align-items: center;
+  position: relative;
+  padding: 0.6em 2em;
+  border: var(--accent-color) solid 0.15em;
+  border-radius: 0.25em;
+  color: var(--accent-color);
+  font-size: 1.5em;
+  font-weight: 600;
+  cursor: pointer;
+  overflow: hidden;
+  transition: border 300ms, color 300ms;
+  user-select: none;
+}
+button:hover {
+  color: #212121;
+}
+button:active {
+  border-color: var(--accent-color);
+}
+button p {
+  z-index: 1;
+}
+button::after, button::before {
+  content: "";
+  position: absolute;
+  width: 9em;
+  aspect-ratio: 1;
+  background: var(--accent-color);
+  opacity: 50%;
+  border-radius: 50%;
+  transition: transform 500ms, background 300ms;
+}
+button::before {
+  left: 0;
+  transform: translateX(-8em);
+}
+button::after {
+  right: 0;
+  transform: translateX(8em);
+}
+button:hover:before {
+  transform: translateX(-1em);
+}
+button:hover:after {
+  transform: translateX(1em);
+}
+button:active:before,
+button:active:after {
+  background: var(--accent-color);
+}
+@keyframes rotateGradient {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+.dark-mode-icon {
+  content: url('./svg/moon.svg');
+  display: inline-block;
+  width: 16px;
+  height: 16px;
+  color: var(--text-secondary);
+  vertical-align: middle;
+  margin-right: 5px;
+}
+.light-mode-icon {
+  content: url('./svg/sun.svg');
+  display: inline-block;
+  width: 16px;
+  height: 16px;
+  vertical-align: middle;
+  margin-right: 5px;
+  filter: invert(1);
+  color: var(--text-secondary);
+}
+#theme-toggle {
+  display: none;
+}
+[data-theme="dark"] .theme-switch .dark-mode-icon {
+  display: none;
+}
+[data-theme="dark"] .theme-switch .light-mode-icon {
+  display: inline-block;
+}
+[data-theme="light"] .theme-switch .light-mode-icon {
+  display: none;
+}
+[data-theme="light"] .theme-switch .dark-mode-icon {
+  display: inline-block;
+}
+@media (max-width: 520px) {
+  .hero {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+}
+</style>
+</head>
+<body>
+<div class="navbar">
+  <div class="logo">Sohayeb Gasmi </div>
+  <div class="nav-links"> 
+    <a href="#home">Home</a>
+    <a href="#skills">Skills</a>
+  </div>
+  <label class="theme-switch">
+    <span class="dark-mode-icon">
+        <img src="./svg/moon.svg" alt="Dark Mode Icon">
+    </span>
+    <span class="light-mode-icon">
+        <img src="./svg/sun.svg" alt="Light Mode Icon">
+    </span>
+    <input type="checkbox" id="theme-toggle">
+  </label>
+</div>
+<div class="container">
+  <div class="background-wave"></div>
+  <div class="hero" id="home">
+    <div class="hero-text">
+      <h1>Hello, I'm</h1>
+      <h2 style="color: var(--accent-color); ">Sohayeb Gasmi</h2>
+      <h3>AI & Cybersecurity</h3>
+      <p>
+        I'm a passionate AI and cybersecurity with a keen interest in using technology to solve complex problems.
+      </p>
+      <div class="social-media">
+       
+       
+        <a href="#" target="_blank">
+            <svg class="w-6 h-6 text-gray-800 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" viewBox="0 0 24 24">
+                <path fill-rule="evenodd" d="M12.51 8.796v1.697a3.738 3.738 0 0 1 3.288-1.684c3.455 0 4.202 2.16 4.202 4.97V19.5h-3.2v-5.072c0-1.21-.244-2.766-2.128-2.766-1.827 0-2.139 1.317-2.139 2.676V19.5h-3.19V8.796h3.168ZM7.2 6.106a1.61 1.61 0 0 1-.988 1.483 1.595 1.595 0 0 1-1.743-.348A1.607 1.607 0 0 1 5.6 4.5a1.601 1.601 0 0 1 1.6 1.606Z" clip-rule="evenodd"/>
+                <path d="M7.2 8.809H4V19.5h3.2V8.809Z"/>
+            </svg>
+        </a>
+        <a href="https://github.com/sohayeb-gasmi" target="_blank">
+            <svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" viewBox="0 0 24 24">
+                <path fill-rule="evenodd" d="M12.006 2a9.847 9.847 0 0 0-6.484 2.44 10.32 10.32 0 0 0-3.393 6.17 10.48 10.48 0 0 0 1.317 6.955 10.045 10.045 0 0 0 5.4 4.418c.504.095.683-.223.683-.494 0-.245-.01-1.052-.014-1.908-2.78.62-3.366-1.21-3.366-1.21a2.711 2.711 0 0 0-1.11-1.5c-.907-.637.07-.621.07-.621.317.044.62.163.885.346.266.183.487.426.647.71.135.253.318.476.538.655a2.079 2.079 0 0 0 2.37.196c.045-.52.27-1.006.635-1.37-2.219-.259-4.554-1.138-4.554-5.07a4.022 4.022 0 0 1 1.031-2.75 3.77 3.77 0 0 1 .096-2.713s.839-.275 2.749 1.05a9.26 9.26 0 0 1 5.004 0c1.906-1.325 2.74-1.05 2.74-1.05.37.858.406 1.828.101 2.713a4.017 4.017 0 0 1 1.029 2.75c0 3.939-2.339 4.805-4.564 5.058a2.471 2.471 0 0 1 .679 1.897c0 1.372-.012 2.477-.012 2.814 0 .272.18.592.687.492a10.05 10.05 0 0 0 5.388-4.421 10.473 10.473 0 0 0 1.313-6.948 10.32 10.32 0 0 0-3.39-6.165A9.847 9.847 0 0 0 12.007 2Z" clip-rule="evenodd"/>
+            </svg>
+        </a>
+        <p style="display:flex ; color: var(--text-primary); justify-content: center; align-items: center; display: flex; font-size: 1.2rem; font-weight: 600; margin: auto ;">+212 628 65 19 57</p>
+      </div>
+    </div>
+    <div class="hero-image">
+      <div class="hexagon">
+        <img src="./img/no-profile-m.jpg" alt="Profile Image">
+      </div>
+    </div>
+  </div>
+  <div class="skills" id="skills">
+    <h2>My Skills</h2>
+    <p class="skills-intro">
+        Here are the skills I bring to the table to help bring your projects to life.
+    </p>
+    <div class="skills-grid">
+      
+      <div class="skill-card" style="--order: 1;">
+        <img src="./Skills/python.png" alt="Skill_python">
+        <h3>Python</h3>
+        <p>
+        Proficient in 
+        <span class="skill-name">Python</span> , leveraging its powerful programming language for building and testing applications efficiently.
+        </p>
+        <div class="star-rating">
+          <span class="star filled"></span>
+          <span class="star filled"></span>
+          <span class="star filled"></span>
+          <span class="star filled"></span>
+          <span class="star filled"></span>
+        </div>
+      </div>
+
+      <div class="skill-card" style="--order: 2;">
+        <img src="./Skills/NumPy.png" alt="Skill_NumPy">
+        <h3>NumPy</h3>
+        <p>
+        Proficient in 
+        <span class="skill-name">NumPy</span>
+        , utilizing its powerful array operations and mathematical functions to analyze and manipulate data efficiently.
+        </p>
+        <div class="star-rating">
+          <span class="star filled"></span>
+          <span class="star filled"></span>
+          <span class="star filled"></span>
+          <span class="star filled"></span>
+          <span class="star filled"></span>
+        </div>
+      </div>
+
+      <div class="skill-card" style="--order: 3;">
+        <img src="./Skills/PyTorch.png" alt="Skill_PyTorch">
+        <h3>PyTorch</h3>
+        <p>
+        Proficient in 
+        <span class="skill-name">PyTorch</span>
+        , leveraging its dynamic computation graph for building and training deep learning models efficiently.
+        </p>
+        <div class="star-rating">
+          <span class="star filled"></span>
+          <span class="star filled"></span>
+          <span class="star filled"></span>
+          <span class="star filled"></span>
+          <span class="star filled"></span>
+        </div>
+      </div>
+
+      <div class="skill-card" style="--order: 4;">
+        <img src="./Skills/scikit-learn.png" alt="Skill_scikit-learn">
+        <h3>scikit-learn</h3>
+        <p>
+        Proficient in 
+        <span class="skill-name">scikit-learn</span>
+        , leveraging its extensive collection of machine learning algorithms and tools for data analysis and modeling.
+        </p>
+        <div class="star-rating">
+          <span class="star filled"></span>
+          <span class="star filled"></span>
+          <span class="star filled"></span>
+          <span class="star filled"></span>
+          <span class="star filled"></span>
+        </div>
+      </div>
+      <div class="skill-card" style="--order: 5;">
+        <img src="./Skills/pandas.png" alt="Skill_pandas">
+        <h3>pandas</h3>
+        <p>
+          Proficient in 
+          <span class="skill-name">pandas</span>
+          , utilizing its powerful data manipulation and analysis capabilities to clean, transform, and analyze data efficiently.
+        </p>
+        <div class="star-rating">
+          <span class="star filled"></span>
+          <span class="star filled"></span>
+          <span class="star filled"></span>
+          <span class="star filled"></span>
+          <span class="star filled"></span>
+        </div>
+      </div>
+
+      <div class="skill-card" style="--order: 6;">
+        <img src="./Skills/Flask.png" alt="Skill_Flask">
+        <h3>Flask</h3>
+        <p>
+        Proficient in 
+        <span class="skill-name">Flask</span>, leveraging its lightweight and flexible framework for building web applications efficiently.
+        
+        </p>
+        <div class="star-rating">
+          <span class="star filled"></span>
+          <span class="star filled"></span>
+          <span class="star filled"></span>
+          <span class="star filled"></span>
+          <span class="star filled"></span>
+        </div>
+      </div>
+
+      <div class="skill-card" style="--order: 7;">
+        <img src="./Skills/Qt Framework.png" alt="Skill_Qt Framework">
+        <h3>Qt Framework</h3>
+        <p>
+        Proficient in<span class="skill-name">  Qt Framework</span>, leveraging its powerful cross-platform application development framework for building efficient and scalable applications.
+        </p>
+        <div class="star-rating">
+          <span class="star filled"></span>
+          <span class="star filled"></span>
+          <span class="star filled"></span>
+          <span class="star filled"></span>
+          <span class="star filled"></span>
+        </div>
+      </div>
+      <div class="skill-card" style="--order: 8;">
+        <img src="./Skills/django.png" alt="Skill_django">
+        <h3>django</h3>
+        <p>
+        Proficient in <span class="skill-name">django</span>, leveraging its powerful web framework for building robust and scalable web applications efficiently.
+        </p>
+        <div class="star-rating">
+          <span class="star filled"></span>
+          <span class="star filled"></span>
+          <span class="star filled"></span>
+          <span class="star filled"></span>
+          <span class="star filled"></span>
+        </div>
+      </div>
+
+      <div class="skill-card" style="--order: 9;">
+        <img src="./Skills/FastAPI.png" alt="Skill_FastAPI">
+        <h3>FastAPI</h3>
+        <p>
+        Proficient in <span class="skill-name">FastAPI</span>, leveraging its high-performance asynchronous web framework for building scalable and efficient web applications.
+        </p>
+        <div class="star-rating">
+          <span class="star filled"></span>
+          <span class="star filled"></span>
+          <span class="star filled"></span>
+          <span class="star filled"></span>
+          <span class="star filled"></span>
+        </div>
+      </div>
+  
+        <div class="skill-card" style="--order: 10;">
+        <img src="./Skills/OpenCV.png" alt="Skill_OpenCV">
+        <h3>OpenCV</h3>
+        <p>
+        Proficient in <span class="skill-name">OpenCV</span>, leveraging its powerful computer vision library for building and training computer vision models efficiently.
+        </p>
+        <div class="star-rating">
+          <span class="star filled"></span>
+          <span class="star filled"></span>
+          <span class="star filled"></span>
+          <span class="star filled"></span>
+          <span class="star filled"></span>
+        </div>
+      </div>
+
+      <div class="skill-card" style="--order: 11;">
+        <img src="./Skills/pytest.png" alt="Skill_pytest">
+        <h3>pytest</h3>
+        <p>
+        Proficient in <span class="skill-name">pytest</span> , leveraging its powerful testing framework for building and testing applications efficiently.
+        </p>
+        <div class="star-rating">
+          <span class="star filled"></span>
+          <span class="star filled"></span>
+          <span class="star filled"></span>
+          <span class="star filled"></span>
+          <span class="star filled"></span>
+        </div>
+      </div>
+
+      
+
+      <div class="skill-card" style="--order: 12;">
+        <img src="./Skills/Matplotlib.png" alt="Skill_Matplotlib">
+        <h3>Matplotlib</h3>
+        <p>
+        Proficient in <span class="skill-name">Matplotlib</span>, leveraging its powerful data visualization library for building and testing applications efficiently.
+        </p>
+        <div class="star-rating">
+          <span class="star filled"></span>
+          <span class="star filled"></span>
+          <span class="star filled"></span>
+          <span class="star filled"></span>
+          <span class="star filled"></span>
+        </div>
+      </div>
+
+      <div class="skill-card" style="--order: 13;">
+        <img src="./Skills/Logo_scapy.png" alt="Skill_scapy">
+        <h3>scapy</h3>
+        <p>
+        Proficient in<span class="skill-name">scapy</span> , leveraging its powerful network analysis and manipulation library for building and testing applications efficiently.
+        </p>
+        <div class="star-rating">
+          <span class="star filled"></span>
+          <span class="star filled"></span>
+          <span class="star filled"></span>
+          <span class="star filled"></span>
+          <span class="star filled"></span>
+        </div>
+      </div>
+
+      <div class="skill-card" style="--order: 14;">
+        <img src="./Skills/Metasploit--Streamline-Simple-Icons.png" alt="Skill_metasploit">
+        <h3>metasploit</h3>
+        <p>
+        Proficient in <span class="skill-name"> metasploit</span>, leveraging its powerful penetration testing framework for building and testing applications efficiently.
+        </p>
+        <div class="star-rating">
+          <span class="star filled"></span>
+          <span class="star filled"></span>
+          <span class="star filled"></span>
+          <span class="star filled"></span>
+          <span class="star filled"></span>
+        </div>
+      </div>
+
+      <div class="skill-card" style="--order: 15;">
+        <img src="./Skills/Logo_nmap.png" alt="Skill_nmap">
+        <h3>nmap</h3>
+        <p>
+        Proficient in<span class="skill-name">nmap</span> , leveraging its powerful network scanning and analysis tool for building and testing applications efficiently.
+        </p>
+        <div class="star-rating">
+          <span class="star filled"></span>
+          <span class="star filled"></span>
+          <span class="star filled"></span>
+          <span class="star filled"></span>
+          <span class="star filled"></span>
+        </div>
+      </div>
+
+      <div class="skill-card" style="--order: 16;">
+        <img src="./Skills/Burpsuite--Streamline-Simple-Icons.png" alt="Skill_Burpsuite">
+        <h3>Burpsuite</h3>
+        <p>
+        Proficient in <span class="skill-name">Burpsuite</span>, leveraging its powerful web application security testing tool for building and testing applications efficiently.
+        </p>
+        <div class="star-rating">
+          <span class="star filled"></span>
+          <span class="star filled"></span>
+          <span class="star filled"></span>
+          <span class="star filled"></span>
+          <span class="star filled"></span>
+        </div>
+      </div>
+
+      <div class="skill-card" style="--order: 17;">
+        <img src="./Skills/zaproxy.png" alt="Skill_zaproxy">
+        <h3>zaproxy</h3>
+        <p>
+        Proficient in <span class="skill-name">zaproxy</span>, leveraging its powerful web application security testing tool for building and testing applications efficiently.
+        </p>
+        <div class="star-rating">
+          <span class="star filled"></span>
+          <span class="star filled"></span>
+          <span class="star filled"></span>
+          <span class="star filled"></span>
+          <span class="star filled"></span>
+        </div>
+      </div>
+
+      <div class="skill-card" style="--order: 18;">
+        <img src="./Skills/MATLAB.png" alt="Skill_MATLAB">
+        <h3>MATLAB</h3>
+        <p>
+        Proficient in <span class="skill-name">MATLAB</span>, leveraging its powerful numerical computing and data analysis capabilities for building and testing applications efficiently.
+        </p>
+        <div class="star-rating">
+          <span class="star filled"></span>
+          <span class="star filled"></span>
+          <span class="star filled"></span>
+          <span class="star filled"></span>
+          <span class="star filled"></span>
+        </div>
+      </div>
+
+      <div class="skill-card" style="--order: 19;">
+        <img src="./Skills/XML.png" alt="Skill_XML">
+        <h3>XML</h3>
+        <p>
+        Proficient in<span class="skill-name">XML</span> , leveraging its powerful markup language for building and testing applications efficiently.
+        </p>
+        <div class="star-rating">
+          <span class="star filled"></span>
+          <span class="star filled"></span>
+          <span class="star filled"></span>
+          <span class="star filled"></span>
+          <span class="star filled"></span>
+        </div>
+      </div>
+
+      <div class="skill-card" style="--order: 20;">
+        <img src="./Skills/Unified Modelling Language (UML).png" alt="Skill_UML">
+        <h3>UML</h3>
+        <p>
+        Proficient in<span class="skill-name"> UML</span>, leveraging its powerful modeling language for building and testing applications efficiently.
+        </p>
+        <div class="star-rating">
+          <span class="star filled"></span>
+          <span class="star filled"></span>
+          <span class="star filled"></span>
+          <span class="star filled"></span>
+          <span class="star filled"></span>
+        </div>
+      </div>
+
+      <div class="skill-card" style="--order: 21;">
+        <img src="./Skills/PostgresSQL.png" alt="Skill_PostgresSQL">
+        <h3>PostgresSQL</h3>
+        <p>
+        Proficient in<span class="skill-name">PostgresSQL</span> , leveraging its powerful relational database management system for building and testing applications efficiently.
+        </p>
+        <div class="star-rating">
+          <span class="star filled"></span>
+          <span class="star filled"></span>
+          <span class="star filled"></span>
+          <span class="star filled"></span>
+          <span class="star filled"></span>
+        </div>
+      </div>
+
+      <div class="skill-card" style="--order: 22;">
+        <img src="./Skills/MongoDB.png" alt="Skill_MongoDB">
+        <h3>MongoDB</h3>
+        <p>
+        Proficient in <span class="skill-name">MongoDB</span>, leveraging its powerful NoSQL database for building and testing applications efficiently.
+        </p>
+        <div class="star-rating">
+          <span class="star filled"></span>
+          <span class="star filled"></span>
+          <span class="star filled"></span>
+          <span class="star filled"></span>
+          <span class="star filled"></span>
+        </div>
+      </div>
+
+      <div class="skill-card" style="--order: 23;">
+        <img src="./Skills/MySQL.png" alt="Skill_MySQL">
+        <h3>MySQL</h3>
+        <p>
+        Proficient in<span class="skill-name">MySQL</span> , leveraging its powerful relational database management system for building and testing applications efficiently.
+        </p>
+        <div class="star-rating">
+          <span class="star filled"></span>
+          <span class="star filled"></span>
+          <span class="star filled"></span>
+          <span class="star filled"></span>
+          <span class="star filled"></span>
+        </div>
+      </div>
+
+      <div class="skill-card" style="--order: 24;">
+        <img src="./Skills/SQLite.png" alt="Skill_SQLite">
+        <h3>SQLite</h3>
+        <p>
+        Proficient in<span class="skill-name">SQLite</span> , leveraging its powerful relational database management system for building and testing applications efficiently.
+        </p>
+        <div class="star-rating">
+          <span class="star filled"></span>
+          <span class="star filled"></span>
+          <span class="star filled"></span>
+          <span class="star filled"></span>
+          <span class="star filled"></span>
+        </div>
+      </div>
+
+      <div class="skill-card" style="--order: 25;">
+        <img src="./Skills/java.png" alt="Skill_java">
+        <h3>Java</h3>
+        <p>
+        Proficient in <span class="skill-name">Java</span>, leveraging its powerful object-oriented programming language for building and testing applications efficiently.
+        </p>
+        <div class="star-rating">
+          <span class="star filled"></span>
+          <span class="star filled"></span>
+          <span class="star filled"></span>
+          <span class="star filled"></span>
+          <span class="star filled"></span>
+        </div>
+      </div>
+
+      <div class="skill-card" style="--order: 26;">
+        <img src="./Skills/html5.png" alt="Skill_html5">
+        <h3>HTML</h3>
+        <p>
+        Proficient in <span class="skill-name">HTML</span>, leveraging its powerful markup language for building and testing applications efficiently.
+        </p>
+        <div class="star-rating">
+          <span class="star filled"></span>
+          <span class="star filled"></span>
+          <span class="star filled"></span>
+          <span class="star filled"></span>
+          <span class="star filled"></span>
+        </div>
+      </div>
+       
+      <div class="skill-card" style="--order: 27;">
+        <img src="./Skills/css.png" alt="Skill_css">
+        <h3>CSS</h3>
+        <p>
+        Proficient in <span class="skill-name">CSS</span>, leveraging its powerful styling language for building and testing applications efficiently.
+        </p>
+        <div class="star-rating">
+          <span class="star filled"></span>
+          <span class="star filled"></span>
+          <span class="star filled"></span>
+          <span class="star filled"></span>
+          <span class="star filled"></span>
+        </div>
+      </div>
+         
+      <div class="skill-card" style="--order: 28;">
+        <img src="./Skills/Bootstrap.png" alt="Skill_Bootstrap">
+        <h3>Bootstrap</h3>
+        <p>
+        Proficient in <span class="skill-name">Bootstrap</span>, leveraging its powerful front-end framework for building and testing applications efficiently.
+        </p>
+        <div class="star-rating">
+          <span class="star filled"></span>
+          <span class="star filled"></span>
+          <span class="star filled"></span>
+          <span class="star filled"></span>
+          <span class="star filled"></span>
+        </div>
+      </div>
+
+      <div class="skill-card" style="--order: 29;">
+        <img src="./Skills/Tailwind CSS.png" alt="Skill_Tailwind CSS">
+        <h3>Tailwind CSS</h3>
+        <p>
+        Proficient in <span class="skill-name">Tailwind CSS</span>, leveraging its powerful utility-first CSS framework for building and testing applications efficiently.
+        </p>
+        <div class="star-rating">
+          <span class="star filled"></span>
+          <span class="star filled"></span>
+          <span class="star filled"></span>
+          <span class="star filled"></span>
+          <span class="star filled"></span>
+        </div>
+      </div>
+
+      <div class="skill-card" style="--order: 30;">
+        <img src="./Skills/radar2.png" alt="Skill_radar2">
+        <h3>radar2</h3>
+        <p>
+        Proficient in<span class="skill-name">radar2</span> , leveraging its powerful radar simulation and analysis tool for building and testing applications efficiently.
+        </p>
+        <div class="star-rating">
+          <span class="star filled"></span>
+          <span class="star filled"></span>
+          <span class="star filled"></span>
+          <span class="star filled"></span>
+          <span class="star filled"></span>
+        </div>
+      </div>
+
+      <div class="skill-card" style="--order: 31;">
+        <img src="./Skills/Embedded C.png" alt="Skill_Embedded C">
+        <h3>Embedded C</h3>
+        <p>
+        Proficient in <span class="skill-name">Embedded C</span>, leveraging its powerful embedded systems programming language for building and testing applications efficiently.
+        </p>
+        <div class="star-rating">
+          <span class="star filled"></span>
+          <span class="star filled"></span>
+          <span class="star filled"></span>
+          <span class="star filled"></span>
+          <span class="star filled"></span>
+        </div>
+      </div>
+
+      <div class="skill-card" style="--order: 32;">
+        <img src="./Skills/Bash.png" alt="Skill_Bash">
+        <h3>Bash</h3>
+        <p>
+        Proficient in<span class="skill-name"> Bash</span>, leveraging its powerful shell scripting language for building and testing applications efficiently.
+        </p>
+        <div class="star-rating">
+          <span class="star filled"></span>
+          <span class="star filled"></span>
+          <span class="star filled"></span>
+          <span class="star filled"></span>
+          <span class="star filled"></span>
+        </div>
+      </div>
+
+      <div class="skill-card" style="--order: 33;">
+        <img src="./Skills/javascript.png" alt="Skill_javascript">
+        <h3>JavaScript</h3>
+        <p>
+        Proficient in <span class="skill-name">JavaScript</span>, leveraging its powerful client-side scripting language for building and testing applications efficiently.
+        </p>
+        <div class="star-rating">
+          <span class="star filled"></span>
+          <span class="star filled"></span>
+          <span class="star filled"></span>
+          <span class="star filled"></span>
+          <span class="star filled"></span>
+        </div>
+      </div>
+
+      <div class="skill-card" style="--order: 34;">
+        <img src="./Skills/c++.png" alt="Skill_c++">
+        <h3>C++</h3>
+        <p>
+        Proficient in <span class="skill-name">C++</span>, leveraging its powerful object-oriented programming language for building and testing applications efficiently.
+        </p>
+        <div class="star-rating">
+          <span class="star filled"></span>
+          <span class="star filled"></span>
+          <span class="star filled"></span>
+          <span class="star filled"></span>
+          <span class="star filled"></span>
+        </div>
+      </div>
+
+      <div class="skill-card" style="--order: 35;">
+        <img src="./Skills/c.png" alt="Skill_c">
+        <h3>C</h3>
+        <p>
+        Proficient in <span class="skill-name">C</span>, leveraging its powerful system programming language for building and testing applications efficiently.
+        </p>
+        <div class="star-rating">
+          <span class="star filled"></span>
+          <span class="star filled"></span>
+          <span class="star filled"></span>
+          <span class="star filled"></span>
+          <span class="star filled"></span>
+        </div>
+      </div>
+
+      <div class="skill-card" style="--order: 36;">
+        <img src="./Skills/LaTeX.png" alt="Skill_LaTeX">
+        <h3>LaTeX</h3>
+        <p>
+        Proficient in <span class="skill-name">LaTeX</span>, leveraging its powerful typesetting system for building and testing applications efficiently.
+        </p>
+        <div class="star-rating">
+          <span class="star filled"></span>
+          <span class="star filled"></span>
+          <span class="star filled"></span>
+          <span class="star filled"></span>
+          <span class="star filled"></span>
+        </div>
+      </div>
+
+      <div class="skill-card" style="--order: 37;">
+        <img src="./Skills/Powershell.png" alt="Skill_Powershell">
+        <h3>Powershell</h3>
+        <p>
+        Proficient in<span class="skill-name">Powershell</span> , leveraging its powerful scripting language for building and testing applications efficiently.
+        </p>
+        <div class="star-rating">
+          <span class="star filled"></span>
+          <span class="star filled"></span>
+          <span class="star filled"></span>
+          <span class="star filled"></span>
+          <span class="star filled"></span>
+        </div>
+      </div>
+
+      <div class="skill-card" style="--order: 38;">
+        <img src="./Skills/react.png" alt="Skill_React">
+        <h3>React</h3>
+        <p>
+        Proficient in <span class="skill-name">React</span>, leveraging its powerful front-end framework for building and testing applications efficiently.
+        </p>
+        <div class="star-rating">
+          <span class="star filled"></span>
+          <span class="star filled"></span>
+          <span class="star filled"></span>
+          <span class="star filled"></span>
+          <span class="star "></span>
+        </div>
+      </div>
+      
+      <div class="skill-card" style="--order: 39;">
+        <img src="./Skills/php.png" alt="Skill_php">
+        <h3>PHP</h3>
+        <p>
+        Proficient in <span class="skill-name">PHP</span>, leveraging its powerful server-side scripting language for building and testing applications efficiently.
+        </p>
+        <div class="star-rating">
+          <span class="star filled"></span>
+          <span class="star filled"></span>
+          <span class="star filled"></span>
+          <span class="star filled"></span>
+          <span class="star"></span>
+        </div>
+      </div>
+
+      <div class="skill-card" style="--order: 40;">
+        <img src="./Skills/jQuery.png" alt="Skill_jQuery">
+        <h3>jQuery</h3>
+        <p>
+        Proficient in <span class="skill-name">jQuery</span>, leveraging its powerful JavaScript library for building and testing applications efficiently.
+        </p>
+        <div class="star-rating">
+          <span class="star filled"></span>
+          <span class="star filled"></span>
+          <span class="star filled"></span>
+          <span class="star filled"></span>
+          <span class="star"></span>
+        </div>
+      </div>
+
+      <div class="skill-card" style="--order: 41;">
+        <img src="./Skills/Markdown.png" alt="Skill_Markdown">
+        <h3>Markdown</h3>
+        <p>
+        Proficient in<span class="skill-name"> Markdown</span>, leveraging its powerful markup language for building and testing applications efficiently.
+        </p>
+        <div class="star-rating">
+          <span class="star filled"></span>
+          <span class="star filled"></span>
+          <span class="star filled"></span>
+          <span class="star filled"></span>
+          <span class="star"></span>
+        </div>
+      </div>
+      
+
+      <div class="skill-card" style="--order: 42;">
+        <img src="./Skills/csharp.png" alt="Skill_csharp">
+        <h3>C#</h3>
+        <p>
+        Proficient in<span class="skill-name">C#</span> , leveraging its powerful object-oriented programming language for building and testing applications efficiently.
+        </p>
+        <div class="star-rating">
+          <span class="star filled"></span>
+          <span class="star filled"></span>
+          <span class="star filled"></span>
+          <span class="star "></span>
+          <span class="star"></span>
+        </div>
+      </div>
+
+      <div class="skill-card" style="--order: 43;">
+        <img src="./Skills/nodejs.png" alt="Skill_nodejs">
+        <h3>Node.js</h3>
+        <p>
+        Proficient in <span class="skill-name">Node.js</span>, leveraging its powerful server-side runtime environment for building and testing applications efficiently.
+        </p>
+        <div class="star-rating">
+          <span class="star filled"></span>
+          <span class="star filled"></span>
+          <span class="star filled"></span>
+          <span class="star"></span>
+          <span class="star"></span>
+        </div>
+      </div>
+
+      <div class="skill-card" style="--order: 44;">
+        <img src="./Skills/nextjs.png" alt="Skill_nextjs">
+        <h3>Next.js</h3>
+        <p>
+        Proficient in <span class="skill-name">Next.js</span>, leveraging its powerful React-based framework for building and testing applications efficiently.
+        </p>
+        <div class="star-rating">
+          <span class="star filled"></span>
+          <span class="star filled"></span>
+          <span class="star filled"></span>
+          <span class="star "></span>
+          <span class="star"></span>
+        </div>
+      </div>
+
+      <div class="skill-card" style="--order: 45;">
+        <img src="./Skills/ruby.png" alt="Skill_ruby">
+        <h3>Ruby</h3>
+        <p>
+        Proficient in <span class="skill-name">Ruby</span>, leveraging its powerful object-oriented programming language for building and testing applications efficiently.
+        </p>
+        <div class="star-rating">
+          <span class="star filled"></span>
+          <span class="star filled"></span>
+          <span class="star filled"></span>
+          <span class="star"></span>
+          <span class="star"></span>
+        </div>
+      </div>
+
+      <div class="skill-card" style="--order: 46;">
+        <img src="./Skills/rust.png" alt="Skill_rust">
+        <h3>Rust</h3>
+        <p>
+        Proficient in <span class="skill-name">Rust</span>, leveraging its powerful systems programming language for building and testing applications efficiently.
+        </p>
+        <div class="star-rating">
+          <span class="star filled"></span>
+          <span class="star filled"></span>
+          <span class="star filled"></span>
+          <span class="star"></span>
+          <span class="star"></span>
+        </div>
+      </div>
+
+      <div class="skill-card" style="--order: 47;">
+        <img src="./Skills/Laravel.png" alt="Skill_Laravel">
+        <h3>Laravel</h3>
+        <p>
+        Proficient in <span class="skill-name">Laravel</span>, leveraging its powerful PHP framework for building and testing applications efficiently.
+        </p>
+        <div class="star-rating">
+          <span class="star filled"></span>
+          <span class="star filled"></span>
+          <span class="star filled"></span>
+          <span class="star"></span>
+          <span class="star"></span>
+        </div>
+      </div>
+
+      <div class="skill-card" style="--order: 48;">
+        <img src="./Skills/Electron.png" alt="Skill_Electron">
+        <h3>Electron</h3>
+          <p>
+        Proficient in <span class="skill-name">Electron</span>, leveraging its powerful cross-platform application development framework for building and testing applications efficiently.
+        </p>
+        <div class="star-rating">
+          <span class="star filled"></span>
+          <span class="star filled"></span>
+          <span class="star filled"></span>
+          <span class="star"></span>
+          <span class="star"></span>
+        </div>
+      </div>
+
+     
+    </div>
+
+    <button href="#view-all" id="toggle-skills">
+        <p id="toggle-skills-text">View All Skills</p>
+    </button>
+  </div>
+</div>
+<script>
+  const toggleSwitch = document.getElementById('theme-toggle');
+  const currentTheme = localStorage.getItem('theme');
+  if (currentTheme) {
+    document.documentElement.setAttribute('data-theme', currentTheme);
+    if (currentTheme === 'light') {
+      toggleSwitch.checked = true;
+    }
+  }
+  function switchTheme(e) {
+    if (e.target.checked) {
+      document.documentElement.setAttribute('data-theme', 'light');
+      localStorage.setItem('theme', 'light');
+    } else {
+      document.documentElement.setAttribute('data-theme', 'dark');
+      localStorage.setItem('theme', 'dark');
+    }
+  }
+  toggleSwitch.addEventListener('change', switchTheme, false);
+
+  const viewAllButton = document.getElementById('toggle-skills');
+  const skillCards = document.querySelectorAll('.skill-card');
+  const toggleSkillsText = document.getElementById('toggle-skills-text');
+  let showingAll = false;
+  viewAllButton.addEventListener('click', (event) => {
+    event.preventDefault();
+    showingAll = !showingAll;
+    if (showingAll) {
+      skillCards.forEach(card => card.style.display = 'block');
+      toggleSkillsText.textContent = 'Less';
+    } else {
+      skillCards.forEach((card, index) => {
+        card.style.display = index < 8 ? 'block' : 'none';
+      });
+      toggleSkillsText.textContent = 'View All Skills';
+    }
+  });
+
+  skillCards.forEach((card, index) => {
+    if (index >= 8) {
+      card.style.display = 'none';
+    }
+  });
+</script>
+</body>
+</html>
